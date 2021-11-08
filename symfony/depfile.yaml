@@ -5,16 +5,17 @@ exclude_files:
 layers:
   - name: Controller
     collectors:
-      - type: className
-        regex: .*Controller.*
+      -   type: directory
+          regex: src/Controller/.*
   - name: Repository
     collectors:
-      - type: className
-        regex: .*Repository.*
+      -   type: directory
+          regex: src/Repository/.*
   - name: Service
     collectors:
-      - type: className
-        regex: .*Service.*
+      -   type: directory
+          regex: src/Service/.*
+
 ruleset:
   Controller:
     - Service
