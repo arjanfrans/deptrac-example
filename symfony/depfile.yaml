@@ -20,6 +20,13 @@ layers:
       -   type: directory
           regex: src/Entity/.*
 
+  # External layers
+  -   name: Symfony\Assert
+      collectors:
+        -   type: classNameRegex
+            regex: '#^Symfony\\Component\\Validator\\Constraints.*#'
+
+
 ruleset:
   Controller:
     - Service
@@ -27,5 +34,6 @@ ruleset:
     - Repository
     - Entity
   Entity:
+      - Symfony\Assert
   Repository:
       - Entity
