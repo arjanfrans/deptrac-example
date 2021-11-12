@@ -2,14 +2,21 @@
 
 namespace App\Controller;
 
-use App\Repository\ContactRepository;
+use App\Service\ContactService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends BaseController
 {
-    #[Route('/contact', name: 'contact')]
-    public function index(ContactRepository $contactRepository)
+    #[Route('/contact', methods: 'GET')]
+    public function index(ContactService $contactService)
     {
-        return $this->json($contactRepository->findAll());
+        return $this->json($contactService->findAllContacts());
+    }
+    
+    #[Route('/create-contact', methods: 'GET')]
+    public function create(Request$request, ContactService $contactService)
+    {
+        return $this->json($contactService->createContact($request->query->get('id'), $request->query->get('name')));
     }
 }

@@ -15,10 +15,17 @@ layers:
     collectors:
       -   type: directory
           regex: src/Service/.*
+  - name: Entity
+    collectors:
+      -   type: directory
+          regex: src/Entity/.*
 
 ruleset:
   Controller:
     - Service
   Service:
     - Repository
+    - Entity
+  Entity:
   Repository:
+      - Entity
